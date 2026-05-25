@@ -1,0 +1,31 @@
+# Burrow 兔子洞 —— 配置文件
+# 使用前请填写你的 API Key
+#
+# 注意：这里只配置 LLM 打标 和 Embedding 向量生成用的 API。
+# 和你聊天的"主模型"（Claude 等）是在 Rikkahub 里配置的，不在这里。
+
+# LLM 打标 API（用于自动提取关键词标签，可关闭）
+# 支持任意 OpenAI 兼容的 Chat API（DeepSeek / OpenAI / Ollama 等）
+tagger:
+  enabled: true
+  model: "deepseek-chat"               # 模型名，按你选的填
+  base_url: "https://api.deepseek.com/v1"  # API 地址
+  api_key: "sk-your-deepseek-key"      # ← 改成你的 DeepSeek Key
+
+# Embedding API（用于语义搜索，可关闭）
+# 支持任意兼容的 Embedding API（Gemini / OpenAI / DeepSeek 等）
+embedding:
+  enabled: true
+  model: "BAAI/bge-m3"                  # ← 改成硅基流动的模型
+  base_url: "https://api.siliconflow.cn/v1"  # ← 改成硅基流动的地址
+  api_key: "sk-your-siliconflow-key"   # ← 改成你的硅基流动 Key
+
+# 服务器（Streamable HTTP 模式，供 Rikkahub 连接）
+server:
+  transport: "streamable-http"  # streamable-http / sse / stdio
+  host: "0.0.0.0"
+  port: 8000
+
+# 数据库
+database:
+  path: "./data/burrow.db"
