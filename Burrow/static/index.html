@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burrow 兔子洞</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 顶栏 -->
+        <header class="topbar">
+            <h1 class="logo" id="homeBtn">Burrow</h1>
+            <span class="subtitle">兔子洞</span>
+            <span class="date" id="todayDate"></span>
+        </header>
+
+        <!-- 主内容区 -->
+        <main id="mainContent"></main>
+
+        <!-- 新增按钮 -->
+        <button class="fab" id="addBtn" title="新增记忆">+</button>
+
+        <!-- 新增弹窗 -->
+        <div class="modal-overlay" id="addModal">
+            <div class="modal">
+                <h2 id="modalTitle">新增记忆</h2>
+
+                <!-- 步骤1: 选择类型 -->
+                <div id="stepType" class="type-grid-sm"></div>
+
+                <!-- 步骤2: 填写内容 -->
+                <div id="stepForm" style="display:none">
+                    <input type="text" id="formTitle" placeholder="标题（可选）" class="input">
+                    <textarea id="formContent" placeholder="内容..." class="input textarea" rows="4"></textarea>
+                    <div id="formFields"></div>
+                    <div class="form-row">
+                        <label>重要度 <span id="impVal">5</span></label>
+                        <input type="range" id="formImportance" min="1" max="10" value="5">
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="formPermanent"> 设为永久记忆
+                    </label>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="btnCancel">取消</button>
+                        <button class="btn btn-primary" id="btnSave">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 详情弹窗 -->
+        <div class="modal-overlay" id="detailModal">
+            <div class="modal modal-detail" id="detailContent"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
